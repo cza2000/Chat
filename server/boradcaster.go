@@ -14,15 +14,15 @@ type clientInfo struct {
 	isOnline bool
 }
 
+var clients = make(map[string]*clientInfo) // all connected clients
+
 var (
 	entering = make(chan loginInfo)
 	leaving  = make(chan loginInfo)
 	messages = make(chan string) // all incoming client messages
-	clients = make(map[string]*clientInfo) // all connected clients
 )
 
 func broadcaster() {
-
 	for {
 		select {
 		case msg := <-messages://说话

@@ -10,7 +10,6 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	go broadcaster()
 
 	for {
@@ -19,7 +18,6 @@ func main() {
 			log.Print(err)
 			continue
 		}
-
 		go handleConn(conn)
 	}
 }

@@ -17,7 +17,6 @@ func handleConn(conn net.Conn) {
 	who, _ := handleCheckOrRegister(conn)
 
 	ch <- "Login success:" + who
-
 	cli := loginInfo {
 		name: who,
 		ch: ch,
@@ -25,7 +24,6 @@ func handleConn(conn net.Conn) {
 	entering <- cli
 
 	done := make(chan struct{})
-
 	go func() {
 		input := bufio.NewScanner(conn)
 		for input.Scan() {
